@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --ocean-blue: #0077be;
+    --sea-green: #20b2aa;
+    --coral: #ff7f50;
+    --sand: #f4a460;
+    --shell-pink: #FFC0CB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, var(--ocean-blue), var(--sea-green));
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.parallax-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.parallax {
+    width: 100%;
+    height: 100%;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.layer-1 { background-image: url('underwater_bg1.jpg'); }
+.layer-2 { background-image: url('underwater_bg2.jpg'); }
+.layer-3 { background-image: url('underwater_bg3.jpg'); }
+.layer-4 { background-image: url('underwater_bg4.jpg'); }
+.layer-5 { background-image: url('underwater_bg5.jpg'); }
+
+main {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+    animation: fadeIn 1.5s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.blob-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+}
+
+.blob-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+.birthday-girl-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--shell-pink);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.invitation {
+    font-size: 1.2rem;
+    color: var(--sand);
+    margin-bottom: 2rem;
+}
+
+.details {
+    margin-bottom: 2rem;
+}
+
+.date, .time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--coral);
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--sand);
+}
+
+.rsvp-btn {
+    background: var(--coral);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rsvp-btn:hover {
+    background: var(--shell-pink);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bubble {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: bubble-rise 5s ease-in-out infinite;
+}
+
+@keyframes bubble-rise {
+    0% { transform: translateY(100vh) scale(0); }
+    100% { transform: translateY(-100vh) scale(1); }
+}
+
+.mermaid {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url('mermaid.png');
+    background-size: contain;
+    animation: swim 15s linear infinite;
+}
+
+@keyframes swim {
+    0% { transform: translateX(-100%) rotateY(0deg); }
+    49% { transform: translateX(100%) rotateY(0deg); }
+    50% { transform: translateX(100%) rotateY(180deg); }
+    99% { transform: translateX(-100%) rotateY(180deg); }
+    100% { transform: translateX(-100%) rotateY(0deg); }
+}
+
+#seaCreatures img {
+    position: absolute;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
