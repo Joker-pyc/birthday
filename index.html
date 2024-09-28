@@ -3,40 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gauri's Mermaid Birthday Celebration</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.5.0/parallax.min.js"></script>
+    <title>Gauri's Magical Mermaid Birthday</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap');
+
+        :root {
+            --ocean-blue: #0077be;
+            --sea-green: #20b2aa;
+            --coral: #ff7f50;
+            --sand: #f4a460;
+            --shell-pink: #FFC0CB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, var(--ocean-blue), var(--sea-green));
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 1.5s ease-out;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .blob-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+        }
+
+        .blob-container svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+            animation: blobMove 10s infinite alternate;
+        }
+
+        @keyframes blobMove {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .birthday-girl-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -55%); }
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--shell-pink);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: colorChange 5s infinite alternate;
+        }
+
+        @keyframes colorChange {
+            0% { color: var(--shell-pink); }
+            50% { color: var(--coral); }
+            100% { color: var(--sand); }
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: var(--sand);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .bubble {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: bubble-rise 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes bubble-rise {
+            0% { transform: translateY(100vh) scale(0); }
+            100% { transform: translateY(-100vh) scale(1); }
+        }
+
+        .sea-creature {
+            position: fixed;
+            animation: float 10s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .sea-creature:hover {
+            transform: scale(1.2);
+        }
+
+        #musicToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--coral);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        #musicToggle:hover {
+            background: var(--shell-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #oceanCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .treasure-chest {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://example.com/treasure-chest.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .treasure-chest:hover {
+            transform: scale(1.1);
+        }
+
+        .seaweed {
+            position: fixed;
+            bottom: 0;
+            width: 100px;
+            height: 200px;
+            background-image: url('https://example.com/seaweed.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: sway 5s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+        }
+    </style>
 </head>
 <body>
     <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="parallax-container">
-        <div id="scene" class="parallax">
-            <div data-depth="0.2" class="layer layer-1"></div>
-            <div data-depth="0.4" class="layer layer-2"></div>
-            <div data-depth="0.6" class="layer layer-3"></div>
-            <div data-depth="0.8" class="layer layer-4"></div>
-            <div data-depth="1.0" class="layer layer-5"></div>
+    <canvas id="oceanCanvas"></canvas>
+
+    <div class="content">
+        <div class="blob-container">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#E1BCEE" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,89.1,-0.5C88.2,15.3,83.8,30.6,75.6,43.9C67.4,57.1,55.4,68.3,41.6,76.3C27.8,84.3,13.9,89.1,-0.4,89.8C-14.7,90.5,-29.4,87,-42.3,79.7C-55.2,72.4,-66.3,61.2,-74.3,47.7C-82.3,34.2,-87.1,17.1,-87.6,-0.3C-88.1,-17.7,-84.2,-35.4,-75.6,-50.2C-67,-65,-53.7,-76.9,-39,-82.1C-24.4,-87.4,-12.2,-86.1,1.9,-89.4C16,-92.7,32,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
+            <img src="cutie.png" alt="Gauri as a Mermaid" class="birthday-girl-image">
         </div>
+        <h1 class="title">Happy 7th Birthday, Gauri!</h1>
+        <p class="message">
+            Dive into a world of wonder, little mermaid!<br>
+            May your day be filled with glittering scales,<br>
+            magical wishes, and ocean adventures.<br>
+            Swim, laugh, and sparkle like the beautiful star you are!
+        </p>
     </div>
 
-    <main>
-        <div class="content">
-            <div class="blob-container">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#E1BCEE" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,89.1,-0.5C88.2,15.3,83.8,30.6,75.6,43.9C67.4,57.1,55.4,68.3,41.6,76.3C27.8,84.3,13.9,89.1,-0.4,89.8C-14.7,90.5,-29.4,87,-42.3,79.7C-55.2,72.4,-66.3,61.2,-74.3,47.7C-82.3,34.2,-87.1,17.1,-87.6,-0.3C-88.1,-17.7,-84.2,-35.4,-75.6,-50.2C-67,-65,-53.7,-76.9,-39,-82.1C-24.4,-87.4,-12.2,-86.1,1.9,-89.4C16,-92.7,32,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
-                </svg>
-                <img src="cutie.png" alt="Gauri as a Mermaid" class="birthday-girl-image">
-            </div>
-           <p>Happy birthday Himu!</p>
-        </div>
-    </main>
+    <button id="musicToggle">🎵 Toggle Music</button>
+    <div class="treasure-chest"></div>
 
-    <div id="bubbles"></div>
-    <div id="seaCreatures"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgMusic = document.getElementById('bgMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            let isMusicPlaying = false;
 
-    <script src="script.js"></script>
+            // Auto-play music on page load
+            bgMusic.play().catch(error => {
+                console.log("Auto-play prevented. User must interact with the page first.");
+            });
+            isMusicPlaying = true;
+            musicToggle.textContent = '🎵 Music On';
+
+            musicToggle.addEventListener('click', function() {
+                if (isMusicPlaying) {
+                    bgMusic.pause();
+                    musicToggle.textContent = '🔇 Music Off';
+                } else {
+                    bgMusic.play();
+                    musicToggle.textContent = '🎵 Music On';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            });
+
+            function createBubbles() {
+                for (let i = 0; i < 50; i++) {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('bubble');
+                    bubble.style.left = `${Math.random() * 100}vw`;
+                    bubble.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                    bubble.style.opacity = Math.random();
+                    bubble.style.transform = `scale(${Math.random()})`;
+                    document.body.appendChild(bubble);
+                }
+            }
+
+            function addSeaCreatures() {
+                const creatures = ['🐠', '🐡', '🦀', '🐙', '🐳'];
+                creatures.forEach(creature => {
+                    const element = document.createElement('div');
+                    element.textContent = creature;
+                    element.classList.add('sea-creature');
+                    element.style.fontSize = `${Math.random() * 30 + 20}px`;
+                    element.style.left = `${Math.random() * 100}vw`;
+                    element.style.top = `${Math.random() * 100}vh`;
+                    element.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                    element.addEventListener('click', () => {
+                        element.style.transform = 'scale(1.5)';
+                        setTimeout(() => {
+                            element.style.transform = 'scale(1)';
+                        }, 500);
+                    });
+                    document.body.appendChild(element);
+                });
+            }
+
+            function addSeaweed() {
+                for (let i = 0; i < 5; i++) {
+                    const seaweed = document.createElement('div');
+                    seaweed.classList.add('seaweed');
+                    seaweed.style.left = `${Math.random() * 100}vw`;
+                    seaweed.style.animationDelay = `${Math.random() * 2}s`;
+                    document.body.appendChild(seaweed);
+                }
+            }
+
+            // Ocean water effect
+            const canvas = document.getElementById('oceanCanvas');
+            const ctx = canvas.getContext('2d');
+            let time = 0;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function drawOcean() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let x = 0; x < canvas.width; x += 20) {
+                    for (let y = 0; y < canvas.height; y += 20) {
+                        const distX = x - canvas.width / 2;
+                        const distY = y - canvas.height / 2;
+                        const distance = Math.sqrt(distX * distX + distY * distY);
+                        
+                        const wave = Math.sin(distance * 0.03 - time * 0.7) * 5;
+                        const size = Math.max(0, (Math.sin(distance * 0.02 - time * 0.3) + 1) * 5);
+
+                        ctx.fillStyle = `rgba(255, 255, 255, ${0.03 + Math.sin(time + x * 0.02) * 0.02})`;
+                        ctx.beginPath();
+                        ctx.arc(x + wave, y + wave, size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                time += 0.05;
+                requestAnimationFrame(drawOcean);
+            }
+
+            const treasureChest = document.querySelector('.treasure-chest');
+            treasureChest.addEventListener('click', () => {
+                alert('You found a magical birthday wish for Gauri!');
+            });
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            drawOcean();
+
+            createBubbles();
+            addSeaCreatures();
+            addSeaweed();
+        });
+    </script>
 </body>
 </html>
